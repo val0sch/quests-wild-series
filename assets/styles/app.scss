@@ -1,0 +1,23 @@
+body {
+  background-color: red;
+  color: #26100c;
+}
+
+
+// // import the functions & variables
+// @import "~bootstrap/scss/_functions.scss";
+// @import "~bootstrap/scss/_variables.scss";
+
+// //custom variables
+// $custom-colors: (
+//   "orange-custom": #ff4e32,
+//   "light-orange-custom": #ffa54d,
+//   "yellow-custom": #ffd02e,
+// );
+
+// $theme-colors: map-merge($custom-colors, $theme-colors);
+
+// $primary: #fde6d2;
+// $secondary: #26100c;
+
+@import "~bootstrap/scss/bootstrap";
