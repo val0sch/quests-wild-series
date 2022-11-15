@@ -29,8 +29,9 @@ class Program
     #[ORM\Column]
     private ?int $year = null;
 
-    #[ORM\Column]
-    private ?int $category_id = null;
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -97,14 +98,14 @@ class Program
         return $this;
     }
 
-    public function getCategoryId(): ?int
+    public function getCategory(): ?Category
     {
-        return $this->category_id;
+        return $this->category;
     }
 
-    public function setCategoryId(int $category_id): self
+    public function setCategory(?Category $category): self
     {
-        $this->category_id = $category_id;
+        $this->category = $category;
 
         return $this;
     }
