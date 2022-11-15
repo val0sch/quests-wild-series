@@ -1,8 +1,8 @@
-// Surcharger les variables bootstrap existantes:
+// Surcharger les variables bootstrap
 $primary: #fffcf2;
 $secondary: #26100c;
 
-// Customizer avec ces propres variables : 
+// Customizer avec ces propres variables :
 // import the functions & variables
 @import "~bootstrap/scss/_functions.scss";
 @import "~bootstrap/scss/_variables.scss";
@@ -20,6 +20,6 @@ $theme-colors: map-merge($custom-colors, $theme-colors);
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  background-color: #fffcf2;
+  background-color: red;
   color: #26100c;
 }
