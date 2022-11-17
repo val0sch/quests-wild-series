@@ -20,7 +20,7 @@ class Program
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $synopsis = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 2048, nullable: true)]
     private ?string $poster = null;
 
     #[ORM\Column(length: 255)]

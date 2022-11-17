@@ -7,4 +7,15 @@
 	<h1>{{ website }}
 		index</h1>
 	<img src="{{ asset('build/images/wild.svg') }}" alt="logo wild series" height="100"/>
+	<div class="d-flex p-5 gap-5">
+		{% for program in programs %}
+			<div class="w-25">
+				<h2>{{ program.title|upper }}</h2>
+				<h3>{{ program.year }}</h3>
+				<p>{{ program.synopsis }}</p>
+
+
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}
