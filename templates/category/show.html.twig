@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!
+{% endblock %}
+
+{% block body %}
+
+	<div class="">
+		<h1>Série
+			{{ categoryName }}</h1>
+		<div class="">
+			{% for program in programs %}
+				<div>
+					<h2>{{program.id}}/{{ program.title }}</h2>
+					<p>{{program.synopsis}}</p>
+
+				</div>
+
+			{% endfor %}
+		</div>
+
+	</div>
+{% endblock %}
