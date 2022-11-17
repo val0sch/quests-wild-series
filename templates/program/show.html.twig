@@ -11,6 +11,12 @@
 			<p>{{ program.synopsis }}</p>
 			<p>Catégorie :
 				{{ program.category.name }}</p>
+			<div class="d-flex gap-5">Saisons :
+
+				{% for season in seasons%}
+					<a href="">{{ season.number }}</a>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 

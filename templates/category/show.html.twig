@@ -11,11 +11,14 @@
 		<div class="">
 			{% for program in programs %}
 				<div>
-					<h2>{{program.id}}/{{ program.title }}</h2>
+					<a href="{{ path("program_show", { id: program.id }) }}">
+						<h2>{{program.id}}/{{ program.title }}</h2>
+					</a>
 					<p>{{program.synopsis}}</p>
 
 				</div>
-
+			{% else %}
+				Aucune série de cette catégorie trouvée.
 			{% endfor %}
 		</div>
 
