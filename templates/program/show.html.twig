@@ -14,7 +14,7 @@
 			<div class="d-flex gap-5">Saisons :
 
 				{% for season in seasons%}
-					<a href="">{{ season.number }}</a>
+					<a href="{{ path("program_season_show", { programId: program.id, seasonId : season.id} ) }}">{{ season.number }}</a>
 				{% endfor %}
 			</div>
 		</div>
