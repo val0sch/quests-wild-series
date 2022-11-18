@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Program;
+use App\Entity\Episode;
+use App\Repository\EpisodeRepository;
 use App\Repository\ProgramRepository;
+use App\Repository\SeasonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,11 +28,12 @@ class ProgramController extends AbstractController
     public function show(int $id, Program $prog, ProgramRepository $programRepository): Response
     {
         $program = $programRepository->findOneBy(['id' => $id]);
-        $seasons = $prog->getSeasons();
-
         // avec méthode magique __call :
-        //  $programs = $programRepository->findOneById($id);
+        // $programs = $programRepository->findOneById($id);
         // ou ++ same as $program = $programRepository->find($id);
+
+        $seasons = $prog->getSeasons();
+        dump($seasons);
 
         if (!$program) {
             throw $this->createNotFoundException(
@@ -40,5 +44,15 @@ class ProgramController extends AbstractController
             'program' => $program,
             'seasons' => $seasons,
         ]);
+    }
+
+    #[Route('/{programId}/season/{seasonId}', methods: ['GET'], name: 'season_show')]
+    public function showSeason(int $programId, int $seasonId, ProgramRepository $programRepository, SeasonRepository $seasonRepository, EpisodeRepository $episodeRepository)
+    {
+        $program = $programRepository->findOneById(['programId' => $programId]);
+        $season = $seasonRepository->findOneById(['seasonId' => $seasonId]);
+        $episodes = $episodeRepository->findBy(['season' => $season], ['number' => 'ASC']);
+
+        return $this->render('program/season_show.html.twig', ['program' => $program, 'season' => $season, 'episodes' => $episodes]);
     }
 }
