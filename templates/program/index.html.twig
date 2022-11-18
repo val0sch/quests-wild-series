@@ -5,17 +5,27 @@
 
 {% block body %}
 	<h1>{{ website }}
-		index</h1>
+		- Toutes les séries TV</h1>
 	<img src="{{ asset('build/images/wild.svg') }}" alt="logo wild series" height="100"/>
 	<div class="d-flex p-5 gap-5">
 		{% for program in programs %}
 			<div class="w-25">
-				<h2>{{ program.title|upper }}</h2>
+				<h2>{{ loop.index }}
+					/{{ program.title|upper }}</h2>
 				<h3>{{ program.year }}</h3>
+				<h4>Genre:
+					{{ program.category.name}}</h4>
 				<p>{{ program.synopsis }}</p>
+				 <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
 
 
 			</div>
+		{% else %}
+			Aucune série trouvée.
 		{% endfor %}
 	</div>
+
+	<a href="{{ path('app_index') }}">
+		Retour à l'accueil
+	</a>
 {% endblock %}

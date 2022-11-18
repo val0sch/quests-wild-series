@@ -20,6 +20,9 @@ $theme-colors: map-merge($custom-colors, $theme-colors);
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  background-color: #fffcf2;
-  color: #26100c;
+  background-color: $primary;
+  color: $secondary;
+}
+a {
+  color: $secondary;
 }
