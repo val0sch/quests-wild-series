@@ -13,7 +13,6 @@ class EpisodeFixture extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
-        // $product = new Product();
         /**
          * 
          * L'objet $faker que tu récupère est l'outil qui va te permettre 
@@ -21,20 +20,22 @@ class EpisodeFixture extends Fixture implements DependentFixtureInterface
          */
 
         //  ***************** MERCI MARIE XD ************
+        // je boucle sur mes programs
+        for ($p = 1; $p <= 5; $p++) {
+            // je boucle sur mes 5 saisons
+            for ($i = 1; $i <= 5; $i++) {
+                // je boucle pour preparer épisodes par saison
+                for ($j = 1; $j <= 10; $j++) {
+                    $episode = new Episode();
+                    //Ce Faker va nous permettre d'alimenter l'instance de Season que l'on souhaite ajouter en base
+                    $episode
+                        ->setTitle($faker->words(3, true))
+                        ->setNumber($j)
+                        ->setDescription($faker->paragraphs(2, true))
+                        ->setSeason($this->getReference('season_reference_' . $i . '-program_' . $p));
 
-        // je boucle sur mes 5 saisons
-        for ($i = 1; $i <= 5; $i++) {
-            // je boucle pour preparer épisodes par saison
-            for ($j = 1; $j <= 10; $j++) {
-                $episode = new Episode();
-                //Ce Faker va nous permettre d'alimenter l'instance de Season que l'on souhaite ajouter en base
-                $episode
-                    ->setTitle($faker->words(3, true))
-                    ->setNumber($j)
-                    ->setDescription($faker->paragraphs(2, true))
-                    ->setSeason($this->getReference('season_' . $i));
-
-                $manager->persist($episode);
+                    $manager->persist($episode);
+                }
             }
         }
         $manager->flush();
@@ -44,7 +45,7 @@ class EpisodeFixture extends Fixture implements DependentFixtureInterface
     {
         // Tu retournes ici toutes les classes de fixtures dont EpisodeFixtures dépend
         return [
-            SeasonFixture::class,
+            ProgramFixture::class,
         ];
     }
 }

@@ -8,9 +8,10 @@
 			de
 			{{ program.title }}</h1>
 
-
 		{% for episode in episodes %}
-			<h3>{{episode.number}}/{{episode.title}}</h3>
+			<a href="{{ path('program_episode_show', {program : program.id , season : season.id, episode:episode.id}) }}">
+				<h3>{{episode.number}}/{{episode.title}}</h3>
+			</a>
 			<p>Synopsis :
 				{{episode.description}}</p>
 		{% endfor %}
