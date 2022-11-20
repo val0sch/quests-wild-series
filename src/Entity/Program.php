@@ -47,6 +47,18 @@ class Program
         return $this->id;
     }
 
+        /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+    
     public function getTitle(): ?string
     {
         return $this->title;
@@ -148,4 +160,6 @@ class Program
 
         return $this;
     }
+
+
 }
