@@ -56,13 +56,16 @@ class ProgramFixture extends Fixture implements DependentFixtureInterface
     {
         foreach (SELF::PROGRAM as $key => $program) {
             $serie = new Program();
-            $serie->setTitle($program['title'])
+            ++$key;
+            $serie->setId($key)
+                ->setTitle($program['title'])
                 ->setSynopsis($program['synopsis'])
                 ->setPoster($program['poster'])
                 ->setCategory($this->getReference('category_' . $program['category']))
                 ->setCountry($program['country'])
                 ->setYear($program['year']);
             $manager->persist($serie);
+            $this->setReference('program_' . $key, $serie);
         }
 
 
