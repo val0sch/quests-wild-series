@@ -13,7 +13,7 @@
 				{{ program.category.name }}</p>
 			<div class="d-flex gap-5">Saisons :
 
-				{% for season in seasons%}
+				{% for season in program.seasons%}
 					<a href="{{ path("program_season_show", { programId: program.id, seasonId : season.id} ) }}">{{ season.number }}</a>
 				{% endfor %}
 			</div>

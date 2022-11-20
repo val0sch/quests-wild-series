@@ -24,25 +24,25 @@ class ProgramController extends AbstractController
         return $this->render('program/index.html.twig', ['website' => 'Wild Series', 'programs' => $programs]);
     }
 
-    #[Route('/{id}', methods: ['GET'], requirements: ['id' => '\d+'], name: 'show')]
-    public function show(int $id, Program $prog, ProgramRepository $programRepository): Response
+    #[Route('/{id}', name: 'show')]
+    public function show(Program $program): Response
     {
-        $program = $programRepository->findOneBy(['id' => $id]);
+        //$program = $programRepository->findOneBy(['id' => $id]);
         // avec méthode magique __call :
         // $programs = $programRepository->findOneById($id);
         // ou ++ same as $program = $programRepository->find($id);
 
-        $seasons = $prog->getSeasons();
-        dump($seasons);
+        //$seasons = $prog->getSeasons();
+        // dump($seasons);
 
         if (!$program) {
             throw $this->createNotFoundException(
-                'No program with id : ' . $id . ' found in program\'s table.'
+                'No program with id : ' . $program->getId() . ' found in program\'s table.'
             );
         }
         return $this->render('program/show.html.twig', [
             'program' => $program,
-            'seasons' => $seasons,
+
         ]);
     }
 
