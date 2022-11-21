@@ -28,34 +28,34 @@ class ProgramController extends AbstractController
     }
 
 
-    // #[Route('/new', name: 'new')]
-    // public function new(Request $request, ProgramRepository $programRepository): Response
-    // {
-    //     $program = new Program();
+    #[Route('/new', name: 'new')]
+    public function new(Request $request, ProgramRepository $programRepository): Response
+    {
+        $program = new Program();
 
-    //     // Create the form, linked with $category
-    //     $form = $this->createForm(ProgramType::class, $program);
+        // Create the form, linked with $category
+        $form = $this->createForm(ProgramType::class, $program);
 
-    //     $form->handleRequest($request);
+        $form->handleRequest($request);
 
-    //     // Was the form submitted ?
-    //     if ($form->isSubmitted()) {
-    //         $programRepository->save($program, true);
+        // Was the form submitted ?
+        if ($form->isSubmitted()) {
+            $programRepository->save($program, true);
 
-    //         // Redirect to categories list
-    //         return $this->redirectToRoute('program_index');
-    //     }
+            // Redirect to categories list
+            return $this->redirectToRoute('program_index');
+        }
 
-    //     // Render the form (best practice)
-    //     return $this->renderForm('program/new.html.twig', [
-    //         'form' => $form,
-    //     ]);
+        // Render the form (best practice)
+        return $this->renderForm('program/new.html.twig', [
+            'form' => $form,
+        ]);
 
-    //     // Alternative
-    //     // return $this->render('category/new.html.twig', [
-    //     //   'form' => $form->createView(),
-    //     // ]);
-    // }
+        // Alternative
+        // return $this->render('category/new.html.twig', [
+        //   'form' => $form->createView(),
+        // ]);
+    }
 
     #[Route('/{id}', methods: ['GET'], requirements: ['id' => '\d+'], name: 'show')]
     public function show(Program $program): Response
