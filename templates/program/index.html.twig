@@ -7,9 +7,9 @@
 	<h1>{{ website }}
 		- Toutes les séries TV</h1>
 	<img src="{{ asset('build/images/wild.svg') }}" alt="logo wild series" height="100"/>
-	<div class="d-flex p-5 gap-5">
+	<div class="d-flex flex-wrap p-5 ">
 		{% for program in programs %}
-			<div class="w-25">
+			<div class="p-5 w-25">
 				<h2>{{ loop.index }}
 					/{{ program.title|upper }}</h2>
 				<h3>{{ program.year }}</h3>

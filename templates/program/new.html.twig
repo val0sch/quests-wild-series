@@ -4,6 +4,10 @@
 
 	{#  génère la balise HTML form #}
 	{{ form_start(form) }}
+	
+	{# Pour forcer l'annulation des validations html:  #}
+{# {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }} #}
+
 
 	{# ajoute l'ensemble des champs de formulaire #}
 	{{ form_widget(form) }}
